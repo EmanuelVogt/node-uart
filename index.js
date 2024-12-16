@@ -1,11 +1,8 @@
-const SerialPort = require('serialport');
+const { SerialPort } = require('serialport')
 
-const port = new SerialPort('/dev/ttyS3', {
-  baudRate: 9600, 
-  dataBits: 8,
-  parity: 'none',
-  stopBits: 1,
-  flowControl: false
+const port = new SerialPort({
+  path: '/dev/ttyS3',
+  baudRate: 9600,
 });
 
 port.on('open', () => {
