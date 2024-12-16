@@ -7,15 +7,16 @@ const port = new SerialPort({
 
 port.on('open', () => {
   console.log('Porta serial aberta');
-
   const mensagem = 'Olá, UART3!';
 
-  port.write(mensagem, (err) => {
-    if (err) {
-      return console.log('Erro ao enviar a mensagem:', err.message);
-    }
-    console.log('Mensagem enviada:', mensagem);
-  });
+  setInterval(() => {
+    port.write(mensagem, (err) => {
+      if (err) {
+        return console.log('Erro ao enviar a mensagem:', err.message);
+      }
+      console.log('Mensagem enviada:', mensagem);
+    });
+  }, 5000);
 });
 
 port.on('error', (err) => {
